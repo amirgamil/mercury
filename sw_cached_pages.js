@@ -45,8 +45,5 @@ self.addEventListener('activate', e => {
 
 //call fetch event which loads cache files if offline
 self.addEventListener('fetch', e => {
-    e.respondWith(fetch(e.request).catch(() => {
-            //not currently available/online, so load from cache
-            caches.match(e.request);
-        }));
+    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
 });
