@@ -20,7 +20,7 @@ class App extends Component {
             //register the service worker, which acts as a proxy between the browser and the remove server
             //register it when the window loads with an event listener
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('js/sw_cached_pages.js')
+                navigator.serviceWorker.register('sw_cached_pages.js')
                     .then(reg => console.log('Service worker registered'))
                     .catch(err => console.log(`Service worker error: ${err}`));
             })
