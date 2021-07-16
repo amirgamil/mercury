@@ -5,7 +5,8 @@ html, body {
     --fgHover: rgb(32, 32, 32, 0.1);
     --fg: #222;
     --bg: #eeecec;
-
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
     background: var(--bg);
     color: var(--fg);
 }
@@ -41,14 +42,10 @@ footer {
     flex-shrink: 0;
     padding: 8px 2px 8px 2px;
     text-align: center; 
-    font-family: 'Fira Sans', sans-serif;
-    font-weight: 300;
+    font-size: 1em;
     color: var(--fg);
 }
 
-p, a, footer{
-    font-size: 20px;
-}
 
 .textbox {
     width: 100%;
