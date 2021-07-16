@@ -1,4 +1,4 @@
-var CACHE_NAME = 'mercury-cache';
+var CACHE_NAME = 'mercury-cachev3';
 var urlsToCache = [
     '../css/stylesheet.css',
     '../index.html',
@@ -29,13 +29,27 @@ self.addEventListener('activate', e => {
     console.log('Service worker activated');
     //clean up old/unwanted cache
     e.waitUntil(
-        caches.keys(cache)
+        caches.keys()
               .then(cacheNames => {
                   return Promise.all(
                       cacheNames.map(cache => {
-                          if 
+                          if (cache !== CACHE_NAME) {
+                              //clean old cache
+                              return caches.delete(cache)
+                          } 
                       })
                   )
               })
+    )
+});
+
+//call fetch event which loads cache files if offline
+self.addEventListener('fetch', e => {
+    console.log("fetching...");
+    e.respondWith(
+        fetch(e.request).cactch(() => {
+            //not currently available, so load from cache
+            caches.match(e.request);
+        })
     )
 });

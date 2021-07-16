@@ -1,9 +1,15 @@
 class App extends Component {
     init() {
         //initalize stuff here
-        this.text = "";
+        if (!window.localStorage.getItem("text")) {
+            window.localStorage.setItem("text", "");
+            this.text = "";
+        } else {
+            this.text = window.localStorage.getItem("text");
+        }
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.registerServiceWorker = this.registerServiceWorker.bind(this);
+        this.addNewPage = this.addNewPage.bind(this);
         this.registerServiceWorker();
     }
 
@@ -21,8 +27,16 @@ class App extends Component {
         }
     }
 
+    addNewPage() {
+        //do animation stuff
+        this.text = "";
+        window.localStorage.setItem("text", "");
+        this.render();
+    }
+
     handleKeyDown(evt) {
         this.text = evt.target.value;
+        window.localStorage.setItem("text", this.text);
         this.render();
     }
 
@@ -42,7 +56,7 @@ class App extends Component {
                     <pre class="p-heights littlePadding ${this.text.endsWith("\n") ? 'endline' : ''}">${this.text}</pre> 
                 </div>
             </div>
-            <button>+</button>
+            <button class="icon" onclick=${this.addNewPage}>+</button>
             <footer>Built with <a href="https://github.com/amirgamil/poseidon">Poseidon</a> by <a href="https://amirbolous.com/">Amir</a></footer>
         </main>` 
     }

@@ -2,6 +2,7 @@ html, body {
     width: 100%;
     height:100%;
     margin: 0 auto;
+    --fgHover: rgb(32, 32, 32, 0.1);
     --fg: #222;
     --bg: #eeecec;
 
@@ -102,16 +103,38 @@ textarea {
 }
 
 
+button:hover {
+    background: var(--fgHover);
+}
+
 button {
     width: fit-content;
     align-self: center;
     background: var(--bg);
+    margin-bottom: 20px;
     color: var(--fg);
     border-radius: 6px;
     border: none;
     font-size: 2em;
 }
 
-button:hover {
+.icon::after {
+    position: absolute;
+    pointer-events: none;
+    white-space: nowrap;
+    content: 'Add new page';
+    padding: 5px;
     background: var(--fgHover);
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+    opacity: 0;
+    transform: translate(-63%, 40px);
+    transition: opacity .2s, transform .2s;
+    transition-delay: 0s;
+}
+
+.icon:hover::after {
+    transition-delay: 0.5s;
+    opacity: 1 !important;
 }
