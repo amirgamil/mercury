@@ -1,5 +1,5 @@
 # Mercury
-A serverless, persistent, and minimal notebook to dump your thoughts that **works fully offline**.
+A serverless, persistent, and minimal notebook to dump stuff that **works fully offline**.
 
 ![home](docs/home.png)
 

@@ -1,7 +1,5 @@
 html, body {
     width: 100%;
-    /*need to add both for sticky footer to work properly on mobile*/
-    height: 100vh; 
     min-height: 100vh;
     margin: 0 auto;
     --fgHover: rgb(32, 32, 32, 0.1);
@@ -29,11 +27,20 @@ body.dark {
 
 main {
     max-width: 800px;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     width: calc(100% - 2em);
+}
+
+@media (max-width:640px)  { 
+    /* smartphones, Android phones, landscape iPhone 
+    vh is handled badly on phone, so change height of main
+    */ 
+    main {
+        height: 85vh !important;
+    }
 }
 
 .littlePadding {
@@ -63,13 +70,6 @@ a {
 
 a:hover{
     text-decoration: underline;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 textarea, .p-heights {

@@ -40,6 +40,10 @@ class App extends Component {
         this.render();
     }
 
+    selectTextArea() {
+        document.getElementsByTagName("textarea")[0].select();
+    }
+
     create() {
         const hour = new Date().getHours();
 		if (hour > 19 || hour < 7) {
@@ -50,7 +54,7 @@ class App extends Component {
 			document.documentElement.style.color = '#fafafa';
 		}
         return html`<main>
-            <div class="content">
+            <div class="content" onclick=${this.selectTextArea}>
                 <div class="textbox"> 
                     <textarea oninput=${this.handleKeyDown} class="littlePadding" placeholder="Dump it :)" value=${this.text}></textarea>
                     <pre class="p-heights littlePadding ${this.text.endsWith("\n") ? 'endline' : ''}">${this.text}</pre> 
