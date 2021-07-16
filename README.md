@@ -1,2 +1,6 @@
 # Mercury
-A note dump that works FULLY offline.
+A serverless, persistent, and minimal notebook to dump your thoughts that **works fully offline**.
+
+![home](docs/home.png)
+
+All magic done by [service workers](https://developers.google.com/web/fundamentals/primers/service-workers) :)

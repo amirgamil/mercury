@@ -1,26 +1,9 @@
 var CACHE_NAME = 'mercury-cache';
-var urlsToCache = [
-    'css/stylesheet.css',
-    './index.html',
-    'js/main.js',
-    'js/poseidon.min.js'
-];
 
 //call install event
 //attach event listener to the worker
 self.addEventListener('install', e => {
     console.log('Service worker installed');
-    //perform install steps
-    e.waitUntil(
-        caches.open(CACHE_NAME)
-              .then(cache => {
-                  //cache data for offline viewing
-                  return cache.addAll(urlsToCache);
-              })
-              .catch(ex => {
-                  console.log(`failed to cache: ${ex}`);
-              })
-    );
 });
 
 
@@ -44,6 +27,20 @@ self.addEventListener('activate', e => {
 });
 
 //call fetch event which loads cache files if offline
-self.addEventListener('fetch', e => {
-    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+self.addEventListener('fetch', event => {
+    event.respondWith(
+      fetch(event.request)
+      .then(res => {
+            //This does not manually cache assets, but will cache all visited websites on-demand (since only a one pager)
+            //clone response
+            const resClone = res.clone();
+            //open cache
+            caches.open(CACHE_NAME)
+                .then(cache => {
+                    //add response to cache
+                    cache.put(event.request, resClone);
+                });
+            return res;
+      }).catch(err => caches.match(event.request).then(res => res))     
+    );
 });

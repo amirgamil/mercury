@@ -1,6 +1,8 @@
 html, body {
     width: 100%;
-    height:100%;
+    /*need to add both for sticky footer to work properly on mobile*/
+    height: 100vh; 
+    min-height: 100vh;
     margin: 0 auto;
     --fgHover: rgb(32, 32, 32, 0.1);
     --fg: #222;
@@ -18,15 +20,17 @@ body.dark {
 }
 
 .content {
-    flex: 1 0 auto;
     color: var(--bg);
+    flex-grow: 1;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
 }
 
 main {
     max-width: 800px;
     min-height: 100vh;
     margin: 0 auto;
-    background: var(--bg);
     display: flex;
     flex-direction: column;
     width: calc(100% - 2em);
@@ -106,6 +110,7 @@ button:hover {
 
 button {
     width: fit-content;
+    flex-shrink: 0;
     align-self: center;
     background: var(--bg);
     margin-bottom: 20px;
