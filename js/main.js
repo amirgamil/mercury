@@ -57,7 +57,7 @@ class App extends Component {
                 </div>
             </div>
             <button class="icon" onclick=${this.addNewPage}>+</button>
-            <footer>Built with <a href="https://github.com/amirgamil/poseidon">Poseidon</a> by <a href="https://amirbolous.com/">Amir</a></footer>
+            <footer>Built with <a href="https://github.com/amirgamil/poseidon">Poseidon</a> by <a href="https://amirbolous.com/">Amir</a> and <a href="https://github.com/amirgamil/mercury">open source</a> on GitHub</footer>
         </main>` 
     }
 }
