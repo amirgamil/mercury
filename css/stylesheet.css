@@ -20,14 +20,13 @@ body.dark {
 .content {
     color: var(--bg);
     flex-grow: 1;
-    overflow: auto;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
 }
 
 main {
     max-width: 800px;
-    height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

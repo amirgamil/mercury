@@ -41,7 +41,7 @@ class App extends Component {
     }
 
     selectTextArea() {
-        document.getElementsByTagName("textarea")[0].select();
+        // document.getElementsByTagName("textarea")[0].select();
     }
 
     create() {
